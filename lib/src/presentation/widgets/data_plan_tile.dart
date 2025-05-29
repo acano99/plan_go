@@ -12,7 +12,6 @@ class DataPlanTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
     final label = (dataPlan.voice.isNotEmpty && dataPlan.sms.isNotEmpty)
         ? '${dataPlan.voice}, ${dataPlan.sms}, 300MB nacionales'
         : '300MB nacionales';
@@ -38,7 +37,8 @@ class DataPlanTile extends StatelessWidget {
                     children: [
                       Text(
                         dataPlan.name,
-                        style: textTheme.titleMedium?.copyWith(
+                        style: TextStyle(
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -47,7 +47,8 @@ class DataPlanTile extends StatelessWidget {
                       ),
                       Text(
                         label,
-                        style: textTheme.labelMedium?.copyWith(
+                        style: TextStyle(
+                          fontSize: 14,
                           fontStyle: FontStyle.italic,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -65,7 +66,8 @@ class DataPlanTile extends StatelessWidget {
                         ),
                         child: Text(
                           dataPlan.price,
-                          style: textTheme.labelMedium?.copyWith(
+                          style: TextStyle(
+                            fontSize: 14,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
                             color: colorScheme.onSecondaryContainer,

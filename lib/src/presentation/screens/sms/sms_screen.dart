@@ -8,6 +8,8 @@ class SmsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(title: Text('Consultas')),
       body: GridView.builder(
@@ -19,7 +21,23 @@ class SmsScreen extends StatelessWidget {
         itemCount: smsList.length,
         itemBuilder: (context, index) => SmsTile(
           sms: smsList[index],
-          onTap: (ussd) async => await SendUssdUseCase.invoke(context, ussd),
+          onTap: (ussd) async {
+            try {
+              await SendUssdUseCase.invoke(context, ussd);
+            } catch (e) {
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: colorScheme.error,
+                    content: Text(
+                      e.toString(),
+                      style: TextStyle(color: colorScheme.onError),
+                    ),
+                  ),
+                );
+              }
+            }
+          },
         ),
       ),
     );

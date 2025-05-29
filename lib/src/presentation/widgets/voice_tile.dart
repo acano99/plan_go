@@ -36,7 +36,8 @@ class VoiceTile extends StatelessWidget {
                     children: [
                       Text(
                         voice.name,
-                        style: textTheme.titleMedium?.copyWith(
+                        style: TextStyle(
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -55,7 +56,8 @@ class VoiceTile extends StatelessWidget {
                         ),
                         child: Text(
                           voice.price,
-                          style: textTheme.labelMedium?.copyWith(
+                          style: TextStyle(
+                            fontSize: 14,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
                             color: colorScheme.onSecondaryContainer,

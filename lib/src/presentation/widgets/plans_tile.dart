@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plan_go/src/data/models/plan.dart';
+import 'package:plan_go/src/presentation/widgets/auto_text.dart';
 
 class PlansTile extends StatelessWidget {
   const PlansTile({super.key, required this.plan, required this.onTap});
@@ -32,12 +33,19 @@ class PlansTile extends StatelessWidget {
                     children: [
                       Text(
                         plan.name,
-                        style: textTheme.titleMedium?.copyWith(
+                        style: TextStyle(
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      Text(plan.label, style: textTheme.labelMedium),
+                      Text(
+                        plan.label,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
                     ],
                   ),
                 ),
