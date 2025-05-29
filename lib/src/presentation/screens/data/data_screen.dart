@@ -4,6 +4,7 @@ import 'package:plan_go/src/data/models/data_plan.dart';
 import 'package:plan_go/src/domain/services/ussd_service.dart';
 import 'package:plan_go/src/domain/use_cases/send_ussd_use_case.dart';
 import 'package:plan_go/src/presentation/widgets/data_plan_tile.dart';
+import 'package:plan_go/src/presentation/widgets/theme_app_bar.dart';
 
 class DataScreen extends StatelessWidget {
   const DataScreen({super.key});
@@ -13,7 +14,7 @@ class DataScreen extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Planes de Datos')),
+      appBar: ThemeAppBar(title: 'Planes de Datos'),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

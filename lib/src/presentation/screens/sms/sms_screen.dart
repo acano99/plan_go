@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plan_go/src/data/default/sms_list.dart';
 import 'package:plan_go/src/domain/use_cases/send_ussd_use_case.dart';
 import 'package:plan_go/src/presentation/widgets/sms_tile.dart';
+import 'package:plan_go/src/presentation/widgets/theme_app_bar.dart';
 
 class SmsScreen extends StatelessWidget {
   const SmsScreen({super.key});
@@ -11,7 +12,7 @@ class SmsScreen extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Consultas')),
+      appBar: ThemeAppBar(title: 'Consultas'),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
