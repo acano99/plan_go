@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:plan_go/src/data/default/plans_list.dart';
+import 'package:plan_go/src/presentation/widgets/plans_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Home')));
+    return Scaffold(
+      appBar: AppBar(title: Text('Plan Go')),
+      body: ListView.builder(
+        padding: EdgeInsets.all(8),
+        itemCount: plansList.length,
+        itemBuilder: (context, index) => PlansTile(
+          plan: plansList[index],
+          onTap: () => Navigator.pushNamed(context, plansList[index].route),
+        ),
+      ),
+    );
   }
 }
