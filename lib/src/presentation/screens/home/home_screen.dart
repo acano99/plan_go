@@ -9,8 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Plan Go')),
-      body: ListView.builder(
+      body: GridView.builder(
         padding: EdgeInsets.all(8),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 400,
+          mainAxisExtent: 140,
+        ),
         itemCount: plansList.length,
         itemBuilder: (context, index) => PlansTile(
           plan: plansList[index],
