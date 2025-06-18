@@ -12,6 +12,10 @@ import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
+import android.net.Uri
+import android.os.Build
+import android.content.Intent
+
 class MainActivity : FlutterActivity() {
     private val CHANNEL = "com.example/plan_go/ussd"
     private val PERMISSION_REQUEST_CODE = 1
@@ -56,33 +60,49 @@ class MainActivity : FlutterActivity() {
             return
         }
 
-        val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val handler = Handler(Looper.getMainLooper())
+        //val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        //val handler = Handler(Looper.getMainLooper())
 
-        telephonyManager.sendUssdRequest(
-            ussdCode,
-            object : TelephonyManager.UssdResponseCallback() {
-                override fun onReceiveUssdResponse(
-                    telephonyManager: TelephonyManager?,
-                    request: String?,
-                    response: CharSequence?
-                ) {
-                    super.onReceiveUssdResponse(telephonyManager, request, response)
-                    result.success(response?.toString() ?: "Respuesta vacía")
-                }
+        //telephonyManager.sendUssdRequest(
+        //    ussdCode,
+        //    object : TelephonyManager.UssdResponseCallback() {
+        //        override fun onReceiveUssdResponse(
+        //            telephonyManager: TelephonyManager?,
+        //            request: String?,
+        //            response: CharSequence?
+        //        ) {
+        //            super.onReceiveUssdResponse(telephonyManager, request, response)
+        //            result.success(response?.toString() ?: "Respuesta vacía")
+        //        }
+        //
+        //        override fun onReceiveUssdResponseFailed(
+        //            telephonyManager: TelephonyManager?,
+        //            request: String?,
+        //            failureCode: Int
+        //        ) {
+        //            super.onReceiveUssdResponseFailed(telephonyManager, request, failureCode)
+        //            val errorMessage = "USSD request failed with code: $failureCode"
+        //            result.error("USSD_ERROR", errorMessage, null)
+        //        }
+        //    },
+        //    handler
+        //)
 
-                override fun onReceiveUssdResponseFailed(
-                    telephonyManager: TelephonyManager?,
-                    request: String?,
-                    failureCode: Int
-                ) {
-                    super.onReceiveUssdResponseFailed(telephonyManager, request, failureCode)
-                    val errorMessage = "USSD request failed with code: $failureCode"
-                    result.error("USSD_ERROR", errorMessage, null)
-                }
-            },
-            handler
-        )
+        try {
+            // Los códigos USSD deben ser codificados para URI, especialmente el carácter '#'
+            // Ejemplo: *123# se convierte en tel:*123%23
+            val encodedUssdCode = Uri.encode(ussdCode)
+            val uriString = "tel:$encodedUssdCode"
+            val ussdIntent = Intent(Intent.ACTION_CALL, Uri.parse(uriString))
+            
+            startActivity(ussdIntent)
+            // Devuelve un valor de éxito genérico. La respuesta real del USSD la maneja el sistema.
+            result.success("USSD_INTENT_LAUNCHED_SUCCESSFULLY")
+        } catch (e: SecurityException) {
+            result.error("SECURITY_EXCEPTION", "Error de seguridad al lanzar intent USSD: ${e.message}", null)
+        } catch (e: Exception) {
+            result.error("INTENT_ERROR", "Error al lanzar intent USSD: ${e.message}", null)
+        }
     }
 
     override fun onRequestPermissionsResult(
