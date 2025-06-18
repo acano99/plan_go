@@ -35,7 +35,7 @@ class SmsTile extends StatelessWidget {
                     children: [
                       Text(
                         sms.name,
-                        style: textTheme.bodyLarge?.copyWith(
+                        style: textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -54,7 +54,7 @@ class SmsTile extends StatelessWidget {
                         ),
                         child: Text(
                           sms.price,
-                          style: textTheme.labelSmall?.copyWith(
+                          style: textTheme.labelMedium?.copyWith(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
                             color: colorScheme.onSecondaryContainer,

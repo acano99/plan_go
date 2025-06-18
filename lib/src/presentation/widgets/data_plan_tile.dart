@@ -38,7 +38,7 @@ class DataPlanTile extends StatelessWidget {
                     children: [
                       Text(
                         dataPlan.name,
-                        style: textTheme.bodyLarge?.copyWith(
+                        style: textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -47,7 +47,7 @@ class DataPlanTile extends StatelessWidget {
                       ),
                       Text(
                         label,
-                        style: textTheme.labelSmall?.copyWith(
+                        style: textTheme.labelMedium?.copyWith(
                           fontStyle: FontStyle.italic,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -65,7 +65,7 @@ class DataPlanTile extends StatelessWidget {
                         ),
                         child: Text(
                           dataPlan.price,
-                          style: textTheme.labelSmall?.copyWith(
+                          style: textTheme.labelMedium?.copyWith(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
                             color: colorScheme.onSecondaryContainer,

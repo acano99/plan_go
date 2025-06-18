@@ -32,12 +32,12 @@ class PlansTile extends StatelessWidget {
                     children: [
                       Text(
                         plan.name,
-                        style: textTheme.bodyLarge?.copyWith(
+                        style: textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      Text(plan.label, style: textTheme.labelSmall),
+                      Text(plan.label, style: textTheme.labelMedium),
                     ],
                   ),
                 ),

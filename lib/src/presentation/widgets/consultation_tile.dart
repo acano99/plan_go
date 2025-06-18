@@ -37,7 +37,7 @@ class ConsultationTile extends StatelessWidget {
                     children: [
                       Text(
                         consultation.name,
-                        style: textTheme.bodyLarge?.copyWith(
+                        style: textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -46,7 +46,7 @@ class ConsultationTile extends StatelessWidget {
                       ),
                       Text(
                         consultation.label,
-                        style: textTheme.labelSmall?.copyWith(
+                        style: textTheme.labelMedium?.copyWith(
                           fontStyle: FontStyle.italic,
                         ),
                         overflow: TextOverflow.ellipsis,
