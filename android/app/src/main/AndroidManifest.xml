@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     
     <application
-        android:label="plan_go"
+        android:label="Plan Go"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
