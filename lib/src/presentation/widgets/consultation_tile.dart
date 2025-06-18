@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:plan_go/src/data/models/consultation.dart';
 import 'package:plan_go/src/data/models/plan.dart';
 
-class PlansTile extends StatelessWidget {
-  const PlansTile({super.key, required this.plan, required this.onTap});
+class ConsultationTile extends StatelessWidget {
+  const ConsultationTile({
+    super.key,
+    required this.consultation,
+    required this.onTap,
+  });
 
-  final Plan plan;
-  final VoidCallback onTap;
+  final Consultation consultation;
+  final Function(String value) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class PlansTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () => onTap(consultation.ussd),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(20),
@@ -31,20 +36,29 @@ class PlansTile extends StatelessWidget {
                     spacing: 4,
                     children: [
                       Text(
-                        plan.name,
+                        consultation.name,
                         style: textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                       ),
-                      Text(plan.label, style: textTheme.labelSmall),
+                      Text(
+                        consultation.label,
+                        style: textTheme.labelSmall?.copyWith(
+                          fontStyle: FontStyle.italic,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
                     ],
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(12),
                   child: Image.asset(
-                    plan.image,
+                    consultation.image,
                     width: 100,
                     height: 80,
                     fit: BoxFit.cover,

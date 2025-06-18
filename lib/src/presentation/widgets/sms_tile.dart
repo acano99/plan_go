@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:plan_go/src/data/models/consultation.dart';
 import 'package:plan_go/src/data/models/plan.dart';
+import 'package:plan_go/src/data/models/sms.dart';
 
-class PlansTile extends StatelessWidget {
-  const PlansTile({super.key, required this.plan, required this.onTap});
+class SmsTile extends StatelessWidget {
+  const SmsTile({super.key, required this.sms, required this.onTap});
 
-  final Plan plan;
-  final VoidCallback onTap;
+  final Sms sms;
+  final Function(String value) onTap;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () => onTap(sms.ussd),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(20),
@@ -31,20 +34,42 @@ class PlansTile extends StatelessWidget {
                     spacing: 4,
                     children: [
                       Text(
-                        plan.name,
+                        sms.name,
                         style: textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.primary,
                         ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                       ),
-                      Text(plan.label, style: textTheme.labelSmall),
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        padding: EdgeInsetsDirectional.symmetric(
+                          vertical: 8,
+                          horizontal: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: colorScheme.secondaryContainer,
+                          borderRadius: BorderRadiusGeometry.circular(12),
+                        ),
+                        child: Text(
+                          sms.price,
+                          style: textTheme.labelSmall?.copyWith(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w500,
+                            color: colorScheme.onSecondaryContainer,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(12),
                   child: Image.asset(
-                    plan.image,
+                    sms.image,
                     width: 100,
                     height: 80,
                     fit: BoxFit.cover,
