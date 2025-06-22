@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plan_go/src/config/router/router.dart';
 
 class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ThemeAppBar({super.key, required this.title});
@@ -10,7 +9,7 @@ class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
       ),
       // actions: [
       //   IconButton(
