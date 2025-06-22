@@ -1,4 +1,4 @@
-package com.example.plan_go
+package com.acano99.plan_go
 
 import android.Manifest
 import android.content.Context
