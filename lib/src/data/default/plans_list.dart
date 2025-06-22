@@ -17,7 +17,7 @@ final plansList = <Plan>[
   Plan(
     'SMS',
     'Comprar plan de sms',
-    'assets/images/sms_plan.png',
+    'assets/images/mobile_sms_plan.png',
     AppRouter.sms,
   ),
   Plan(

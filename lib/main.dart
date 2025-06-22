@@ -1,11 +1,9 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plan_go/src/config/router/router.dart';
 import 'package:plan_go/src/config/theme/theme.dart';
 
 void main() async {
-  runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,9 +14,6 @@ class MyApp extends StatelessWidget {
     final brightness = MediaQuery.platformBrightnessOf(context);
 
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: brightness == Brightness.dark
