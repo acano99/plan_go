@@ -22,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: ThemeAppBar(title: 'PlanGo'),
       body: GridView.builder(
