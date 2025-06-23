@@ -9,9 +9,16 @@ class SendUssdUseCase {
       await SendUssdService.sendUssd(ussd);
     } catch (e) {
       if (context.mounted) {
+        String fullErrorMessage = e.toString();
+
+        String cleanErrorMessage = fullErrorMessage.replaceFirst(
+          RegExp(r'^Exception: '),
+          '',
+        );
+
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(showErrorSnackbar(context, e.toString()));
+        ).showSnackBar(showErrorSnackbar(context, cleanErrorMessage));
       }
     }
   }
