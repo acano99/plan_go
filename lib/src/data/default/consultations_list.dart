@@ -14,6 +14,12 @@ final consultationsList = <Consultation>[
     'assets/images/consult_plan.png',
   ),
   Consultation(
+    'Balance',
+    'Consulta hasta cuando no puede volver a recargar',
+    '*222*732#',
+    'assets/images/consult_plan.png',
+  ),
+  Consultation(
     'Datos',
     'Consulta tu plan de datos.',
     '*222*328#',

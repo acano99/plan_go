@@ -15,6 +15,7 @@ import io.flutter.plugin.common.MethodChannel
 import android.net.Uri
 import android.os.Build
 import android.content.Intent
+import android.content.IntentSender
 
 class MainActivity : FlutterActivity() {
     private val CHANNEL = "com.example/plan_go/ussd"
@@ -68,9 +69,11 @@ class MainActivity : FlutterActivity() {
             startActivity(ussdIntent)
             result.success("USSD_INTENT_LAUNCHED_SUCCESSFULLY")
         } catch (e: SecurityException) {
-            result.error("SECURITY_EXCEPTION", "Error de seguridad al lanzar intent USSD: ${e.message}", null)
+            throw SecurityException("Error de seguridad al lanzar intent USSD: ${e.message}")
+            //result.error("SECURITY_EXCEPTION", "Error de seguridad al lanzar intent USSD: ${e.message}", null)
         } catch (e: Exception) {
-            result.error("INTENT_ERROR", "Error al lanzar intent USSD: ${e.message}", null)
+            throw IntentSender.SendIntentException("Error al lanzar intent USSD: ${e.message}")
+            //result.error("INTENT_ERROR", "Error al lanzar intent USSD: ${e.message}", null)
         }
     }
 
