@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme,
       routes: AppRouter().getRoutes(context),
-      initialRoute: AppRouter.home,
+      initialRoute: AppRouter.start,
     );
   }
 }
