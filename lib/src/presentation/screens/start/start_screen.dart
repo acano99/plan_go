@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plan_go/src/presentation/screens/consult/consultation_screen.dart';
+import 'package:plan_go/src/presentation/screens/plans/home_screen.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -30,14 +32,14 @@ class _StartScreenState extends State<StartScreen> {
           NavigationDestination(
             icon: Icon(Icons.article_outlined),
             selectedIcon: Icon(Icons.article_rounded),
-            label: 'Consultas',
+            label: 'Planes',
           ),
         ],
       ),
       body: [
         Container(color: Colors.red),
-        Container(color: Colors.green),
-        Container(color: Colors.blue),
+        ConsultationScreen(),
+        HomeScreen(),
       ][selectedIndex],
     );
   }
