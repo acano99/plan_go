@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:plan_go/src/presentation/screens/consult/consultation_screen.dart';
-import 'package:plan_go/src/presentation/screens/plans/home_screen.dart';
+
+import '../consult/consultation_screen.dart';
+import '../plans/plan_screen.dart';
+import '../utility/utility_screen.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -10,14 +12,20 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  int selectedIndex = 1;
+  int _selectedIndex = 1;
+  final _screens = [
+    UtilitiesScreen(key: ValueKey<String>('utilities')),
+    ConsultationScreen(key: ValueKey<String>('consultations')),
+    PlanScreen(key: ValueKey<String>('plan')),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (value) => setState(() => selectedIndex = value),
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (value) =>
+            setState(() => _selectedIndex = value),
         destinations: [
           NavigationDestination(
             icon: Icon(Icons.build_outlined),
@@ -36,11 +44,12 @@ class _StartScreenState extends State<StartScreen> {
           ),
         ],
       ),
-      body: [
-        Container(color: Colors.red),
-        ConsultationScreen(),
-        HomeScreen(),
-      ][selectedIndex],
+      body: AnimatedSwitcher(
+        duration: Duration(milliseconds: 800),
+        transitionBuilder: (child, animation) =>
+            FadeTransition(opacity: animation, child: child),
+        child: _screens[_selectedIndex],
+      ),
     );
   }
 }
