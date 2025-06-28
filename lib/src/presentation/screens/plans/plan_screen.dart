@@ -4,14 +4,14 @@ import 'package:plan_go/src/domain/services/request_permision_service.dart';
 import 'package:plan_go/src/presentation/widgets/plans_tile.dart';
 import 'package:plan_go/src/presentation/widgets/theme_app_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class PlanScreen extends StatefulWidget {
+  const PlanScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<PlanScreen> createState() => _PlanScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _PlanScreenState extends State<PlanScreen> {
   @override
   void initState() {
     Future.microtask(
