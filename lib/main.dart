@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
     FlutterNativeSplash.remove();
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PlanGo',
       debugShowCheckedModeBanner: false,
       theme: theme,
       routes: AppRouter().getRoutes(context),
