@@ -92,7 +92,7 @@ class ConsultationScreen extends StatelessWidget {
 
             if (context.mounted) {
               if (confirmed == true) {
-                await SendUssdUseCase.invoke(context, ussd);
+                await SendUssdUseCase.invokeAsync(context, ussd);
               }
             }
           },
