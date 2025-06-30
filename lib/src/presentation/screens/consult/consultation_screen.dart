@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plan_go/src/data/default/consultations_list.dart';
 import 'package:plan_go/src/domain/use_cases/send_ussd_use_case.dart';
+import 'package:plan_go/src/presentation/globals/ussd_provider.dart';
 import 'package:plan_go/src/presentation/widgets/consultation_tile.dart';
 import 'package:plan_go/src/presentation/widgets/theme_app_bar.dart';
+import 'package:provider/provider.dart';
 
 class ConsultationScreen extends StatelessWidget {
   const ConsultationScreen({super.key});
@@ -92,7 +94,7 @@ class ConsultationScreen extends StatelessWidget {
 
             if (context.mounted) {
               if (confirmed == true) {
-                await SendUssdUseCase.invokeAsync(context, ussd);
+                await context.read<UssdProvider>().sendUssd(context, ussd);
               }
             }
           },

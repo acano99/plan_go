@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 class SendUssdService {
-  static Future<void> sendUssd(String ussdCode) async {
+  Future<void> sendUssd(String ussdCode) async {
     try {
       final platform = MethodChannel('com.example/plan_go/ussd');
       await platform.invokeMethod('sendUssd', {'code': ussdCode});

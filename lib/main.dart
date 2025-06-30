@@ -3,10 +3,12 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:plan_go/src/config/router/router.dart';
 import 'package:plan_go/src/config/theme/theme.dart';
 import 'package:plan_go/src/domain/services/theme_service.dart';
+import 'package:plan_go/src/domain/use_cases/send_ussd_use_case.dart';
 import 'package:plan_go/src/domain/use_cases/theme/get_theme_use_case.dart';
 import 'package:plan_go/src/domain/use_cases/theme/set_theme_use_case.dart';
 import 'package:plan_go/src/presentation/globals/global_provider.dart';
 import 'package:plan_go/src/presentation/globals/service_locator.dart';
+import 'package:plan_go/src/presentation/globals/ussd_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,6 +28,10 @@ void main() async {
             getThemeUseCase: serviceLocator<GetThemeUseCase>(),
             setThemeUseCase: serviceLocator<SetThemeUseCase>(),
           ),
+        ),
+        Provider(
+          create: (context) =>
+              UssdProvider(sendUssdUseCase: serviceLocator<SendUssdUseCase>()),
         ),
       ],
       child: MyApp(),

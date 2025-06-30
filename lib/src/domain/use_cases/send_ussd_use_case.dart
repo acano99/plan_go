@@ -4,28 +4,14 @@ import 'package:plan_go/src/domain/services/ussd_service.dart';
 import '../../presentation/widgets/error_snackbar.dart';
 
 class SendUssdUseCase {
-  static Future<void> invokeAsync(BuildContext context, String ussd) async {
-    try {
-      await SendUssdService.sendUssd(ussd);
-    } catch (e) {
-      if (context.mounted) {
-        String fullErrorMessage = e.toString();
+  final SendUssdService _sendUssdService;
 
-        String cleanErrorMessage = fullErrorMessage.replaceFirst(
-          RegExp(r'^Exception: '),
-          '',
-        );
-
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(showErrorSnackbar(context, cleanErrorMessage));
-      }
-    }
-  }
+  SendUssdUseCase({required SendUssdService sendUssdService})
+    : _sendUssdService = sendUssdService;
 
   Future<void> invoke(BuildContext context, String ussd) async {
     try {
-      await SendUssdService.sendUssd(ussd);
+      await _sendUssdService.sendUssd(ussd);
     } catch (e) {
       if (context.mounted) {
         String fullErrorMessage = e.toString();
