@@ -1,6 +1,6 @@
 name: plan_go
 description: "A new Flutter project."
-version: 2.0.0+3
+version: 2.0.0+4
 
 environment:
   sdk: ^3.8.0
@@ -64,7 +64,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 icons_launcher:
-  image_path: "assets/drawable/ic_launcher.png"
+  image_path: "assets/drawable/ic_logo.png"
   platforms:
     android:
       enable: true
@@ -72,11 +72,7 @@ icons_launcher:
       enable: true
 
 flutter_native_splash:
-  color: "#ffffff"
-  color_dark: "#ffffff"
+  background_image: "assets/drawable/ic_splash.png"
 
   android_12:
-    color: "#ffffff"
-    color_dark: "#ffffff"
-    icon_background_color: "#ffffff"
-    icon_background_color_dark: "#ffffff"
+    background_image: "assets/drawable/ic_splash.png"
