@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plan_go/src/presentation/screens/data/data_screen.dart';
 import 'package:plan_go/src/presentation/screens/settings/settings_screen.dart';
@@ -14,23 +15,33 @@ class AppRouter {
   static const String settings = '/settings';
   static const String transfer = '/transfer';
 
+  static GoRoute fadeRoute({
+    required String path,
+    required String name,
+    required Widget child,
+  }) {
+    return GoRoute(
+      path: path,
+      name: name,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: child,
+        transitionDuration: const Duration(milliseconds: 700),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
+      ),
+    );
+  }
+
   static GoRouter router() => GoRouter(
     initialLocation: start,
     routes: [
-      GoRoute(name: start, path: start, builder: (_, _) => StartScreen()),
-      GoRoute(
-        name: transfer,
-        path: transfer,
-        builder: (_, _) => TransferScreen(),
-      ),
-      GoRoute(path: data, name: data, builder: (_, _) => DataScreen()),
-      GoRoute(path: sms, name: sms, builder: (_, _) => SmsScreen()),
-      GoRoute(path: voice, name: voice, builder: (_, _) => VoiceScreen()),
-      GoRoute(
-        path: settings,
-        name: settings,
-        builder: (_, _) => SettingsScreen(),
-      ),
+      fadeRoute(path: start, name: start, child: StartScreen()),
+      fadeRoute(path: transfer, name: transfer, child: TransferScreen()),
+      fadeRoute(path: data, name: data, child: DataScreen()),
+      fadeRoute(path: sms, name: sms, child: SmsScreen()),
+      fadeRoute(path: voice, name: voice, child: VoiceScreen()),
+      fadeRoute(path: settings, name: settings, child: SettingsScreen()),
     ],
   );
 }
