@@ -8,7 +8,7 @@ final utilitiesList = <Plan>[
     'assets/images/data_plan.png',
     AppRouter.transfer,
   ),
-  Plan(
+  /*Plan(
     'Tarifa por Consumo',
     'Active o desactive la tarifa por consumo',
     'assets/images/mobile_sms_plan.png',
@@ -19,5 +19,5 @@ final utilitiesList = <Plan>[
     'Gestione su plan de amigos',
     'assets/images/voice_plan.png',
     AppRouter.voice,
-  ),
+  ),*/
 ];
