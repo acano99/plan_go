@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plan_go/src/data/default/utilities_list.dart';
 
 import '../../widgets/plans_tile.dart';
@@ -20,7 +21,7 @@ class UtilitiesScreen extends StatelessWidget {
         itemCount: utilitiesList.length,
         itemBuilder: (context, index) => PlansTile(
           plan: utilitiesList[index],
-          onTap: () => Navigator.pushNamed(context, utilitiesList[index].route),
+          onTap: () => context.pushNamed(utilitiesList[index].route),
         ),
       ),
     );

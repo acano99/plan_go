@@ -9,6 +9,7 @@ import 'package:plan_go/src/domain/use_cases/theme/set_theme_use_case.dart';
 import 'package:plan_go/src/presentation/globals/global_provider.dart';
 import 'package:plan_go/src/presentation/globals/service_locator.dart';
 import 'package:plan_go/src/presentation/globals/ussd_provider.dart';
+import 'package:plan_go/src/presentation/screens/transfer/transfer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,6 +33,11 @@ void main() async {
         Provider(
           create: (context) =>
               UssdProvider(sendUssdUseCase: serviceLocator<SendUssdUseCase>()),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransferProvider(
+            sendUssdUseCase: serviceLocator<SendUssdUseCase>(),
+          ),
         ),
       ],
       child: MyApp(),
@@ -59,12 +65,11 @@ class MyApp extends StatelessWidget {
 
     FlutterNativeSplash.remove();
 
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'PlanGo',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      routes: AppRouter().getRoutes(context),
-      initialRoute: AppRouter.start,
+      routerConfig: AppRouter.router(),
     );
   }
 }

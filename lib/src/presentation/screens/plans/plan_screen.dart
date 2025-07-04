@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plan_go/src/data/default/plans_list.dart';
 import 'package:plan_go/src/domain/services/request_permision_service.dart';
 import 'package:plan_go/src/presentation/widgets/plans_tile.dart';
@@ -35,7 +36,7 @@ class _PlanScreenState extends State<PlanScreen> {
         itemCount: plansList.length,
         itemBuilder: (context, index) => PlansTile(
           plan: plansList[index],
-          onTap: () => Navigator.pushNamed(context, plansList[index].route),
+          onTap: () => context.pushNamed(plansList[index].route),
         ),
       ),
     );

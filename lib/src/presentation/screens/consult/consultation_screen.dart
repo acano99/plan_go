@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plan_go/src/data/default/consultations_list.dart';
 import 'package:plan_go/src/presentation/globals/ussd_provider.dart';
 import 'package:plan_go/src/presentation/widgets/consultation_tile.dart';
@@ -27,8 +28,7 @@ class ConsultationScreen extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRouter.settings),
+                onPressed: () => context.pushNamed(AppRouter.settings),
                 icon: Icon(Icons.settings_rounded),
               ),
             ],
