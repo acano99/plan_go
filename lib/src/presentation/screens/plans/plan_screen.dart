@@ -25,7 +25,7 @@ class _PlanScreenState extends State<PlanScreen> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: ThemeAppBar(title: 'PlanGo'),
+      appBar: ThemeAppBar(title: 'Planes'),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
