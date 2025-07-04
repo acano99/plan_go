@@ -47,16 +47,16 @@ class ConsultationScreen extends StatelessWidget {
             onTap: (ussd) async {
               final consultation = consultationsList[index];
 
-              final confirmed = await showModalBottomSheet<bool>(
+              await showModalBottomSheet(
                 context: context,
                 builder: (context) => ModalBody(
                   titleIcon: Icons.balance_rounded,
                   title: consultation.name,
                   cancelButtonLabel: 'Cancelar',
                   cancelButtonOnPressed: () => Navigator.of(context).pop(),
-                  confirmButtonLabel: 'Confirmar',
+                  confirmButtonLabel: 'Consultar',
                   confirmButtonOnPressed: () async {
-                    Navigator.of(context).pop(false);
+                    context.pop();
                     if (context.mounted) {
                       await context.read<UssdProvider>().sendUssd(
                         context,
