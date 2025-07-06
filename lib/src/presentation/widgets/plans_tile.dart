@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:plan_go/src/data/models/plan.dart';
-import 'package:plan_go/src/presentation/widgets/auto_text.dart';
 
 class PlansTile extends StatelessWidget {
   const PlansTile({super.key, required this.plan, required this.onTap});
@@ -31,12 +30,15 @@ class PlansTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 4,
                     children: [
-                      Text(
-                        plan.name,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: Theme.of(context).colorScheme.primary,
+                      FittedBox(
+                        child: Text(
+                          plan.name,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          maxLines: 1,
                         ),
                       ),
                       Text(

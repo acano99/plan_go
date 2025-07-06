@@ -3,10 +3,13 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:plan_go/src/config/router/router.dart';
 import 'package:plan_go/src/config/theme/theme.dart';
 import 'package:plan_go/src/domain/services/theme_service.dart';
+import 'package:plan_go/src/domain/use_cases/send_ussd_use_case.dart';
 import 'package:plan_go/src/domain/use_cases/theme/get_theme_use_case.dart';
 import 'package:plan_go/src/domain/use_cases/theme/set_theme_use_case.dart';
 import 'package:plan_go/src/presentation/globals/global_provider.dart';
 import 'package:plan_go/src/presentation/globals/service_locator.dart';
+import 'package:plan_go/src/presentation/globals/ussd_provider.dart';
+import 'package:plan_go/src/presentation/screens/transfer/transfer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,13 +21,25 @@ void main() async {
 
   await setupLocator(prefs);
 
+  final theme = await serviceLocator<GetThemeUseCase>().invoke();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<GlobalProvider>(
           create: (context) => GlobalProvider(
+            theme: theme,
             getThemeUseCase: serviceLocator<GetThemeUseCase>(),
             setThemeUseCase: serviceLocator<SetThemeUseCase>(),
+          ),
+        ),
+        Provider(
+          create: (context) =>
+              UssdProvider(sendUssdUseCase: serviceLocator<SendUssdUseCase>()),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransferProvider(
+            sendUssdUseCase: serviceLocator<SendUssdUseCase>(),
           ),
         ),
       ],
@@ -42,7 +57,7 @@ class MyApp extends StatelessWidget {
 
     final globalProvider = context.watch<GlobalProvider>();
 
-    final ThemeData theme = globalProvider.theme == SelectedTheme.dark
+    final ThemeData themeApp = globalProvider.theme == SelectedTheme.dark
         ? MaterialTheme(TextTheme()).dark()
         : globalProvider.theme == SelectedTheme.light
         ? MaterialTheme(TextTheme()).light()
@@ -53,12 +68,11 @@ class MyApp extends StatelessWidget {
 
     FlutterNativeSplash.remove();
 
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'PlanGo',
       debugShowCheckedModeBanner: false,
-      theme: theme,
-      routes: AppRouter().getRoutes(context),
-      initialRoute: AppRouter.home,
+      theme: themeApp,
+      routerConfig: AppRouter.router(),
     );
   }
 }

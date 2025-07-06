@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../config/router/router.dart';
 
@@ -17,7 +18,7 @@ class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (showSetting)
           IconButton(
-            onPressed: () => Navigator.pushNamed(context, AppRouter.settings),
+            onPressed: () => context.pushNamed(AppRouter.settings),
             icon: Icon(Icons.settings_rounded),
           ),
       ],
