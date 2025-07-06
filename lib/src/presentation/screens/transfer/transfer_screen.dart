@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plan_go/src/presentation/screens/sms/sms_screen.dart';
 import 'package:plan_go/src/presentation/screens/transfer/transfer_provider.dart';
 import 'package:plan_go/src/presentation/screens/transfer/widget/numeric_text_form_field.dart';
 import 'package:plan_go/src/presentation/widgets/blue_button.dart';
@@ -194,14 +193,14 @@ class _TransferScreenState extends State<TransferScreen> {
                     NumericTextFormField(
                       controller: _passwordController,
                       focusNode: _passwordFocusNode,
-                      label: 'Contrasena',
+                      label: 'Contraseña',
                       onFieldSubmitted: (_) async {
                         _passwordFocusNode.unfocus();
                         onPressed();
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Contrasenna requerida';
+                          return 'Contraseña requerida';
                         }
                         return null;
                       },

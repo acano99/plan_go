@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plan_go/src/domain/services/request_permision_service.dart';
 
 import '../consult/consultation_screen.dart';
 import '../plans/plan_screen.dart';
@@ -18,6 +19,14 @@ class _StartScreenState extends State<StartScreen> {
     ConsultationScreen(key: ValueKey<String>('consultations')),
     PlanScreen(key: ValueKey<String>('plan')),
   ];
+
+  @override
+  void initState() {
+    Future.microtask(
+      () async => await RequestPermissionsService.requestPhonePermission(),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

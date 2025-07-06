@@ -9,7 +9,7 @@ class GlobalProvider extends ChangeNotifier {
   final SetThemeUseCase _setThemeUseCase;
 
   GlobalProvider({
-    this.theme,
+    this.theme = SelectedTheme.automatic,
     required GetThemeUseCase getThemeUseCase,
     required SetThemeUseCase setThemeUseCase,
   }) : _getThemeUseCase = getThemeUseCase,
