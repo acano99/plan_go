@@ -1,0 +1,14 @@
+Hola a todos 👋
+
+Queremos informarles que debido a un pequeño error técnico durante la publicación de la aplicación, esta fue subida con un nombre de paquete incorrecto. Para corregirlo, hemos tenido que lanzar una nueva versión de la aplicación con el nombre correcto.
+
+Esto significa que, desde ahora, deberán descargar la nueva aplicación desde la tienda. Aunque técnicamente es una "app diferente" para Google Play, el contenido, funcionalidades y futuras actualizaciones estarán disponibles ahí.
+
+Lamentamos cualquier inconveniente que esto pueda causar, especialmente para quienes ya usaban la app anterior. Trabajamos para hacer este cambio lo más suave posible.
+
+Si tenías cuenta dentro de la app, podrás iniciar sesión normalmente en la nueva versión y recuperar tu información.
+
+Muchas gracias por su comprensión y apoyo.
+
+📱 Nombre de tu App
+[Link directo a la nueva app]
