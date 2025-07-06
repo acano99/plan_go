@@ -13,9 +13,7 @@ class GlobalProvider extends ChangeNotifier {
     required GetThemeUseCase getThemeUseCase,
     required SetThemeUseCase setThemeUseCase,
   }) : _getThemeUseCase = getThemeUseCase,
-       _setThemeUseCase = setThemeUseCase {
-    Future.microtask(() async => await getTheme());
-  }
+       _setThemeUseCase = setThemeUseCase;
 
   Future<void> getTheme() async {
     theme = await _getThemeUseCase.invoke();

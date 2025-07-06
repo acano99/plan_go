@@ -21,11 +21,14 @@ void main() async {
 
   await setupLocator(prefs);
 
+  final theme = await serviceLocator<GetThemeUseCase>().invoke();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<GlobalProvider>(
           create: (context) => GlobalProvider(
+            theme: theme,
             getThemeUseCase: serviceLocator<GetThemeUseCase>(),
             setThemeUseCase: serviceLocator<SetThemeUseCase>(),
           ),
@@ -54,7 +57,7 @@ class MyApp extends StatelessWidget {
 
     final globalProvider = context.watch<GlobalProvider>();
 
-    final ThemeData theme = globalProvider.theme == SelectedTheme.dark
+    final ThemeData themeApp = globalProvider.theme == SelectedTheme.dark
         ? MaterialTheme(TextTheme()).dark()
         : globalProvider.theme == SelectedTheme.light
         ? MaterialTheme(TextTheme()).light()
@@ -68,7 +71,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'PlanGo',
       debugShowCheckedModeBanner: false,
-      theme: theme,
+      theme: themeApp,
       routerConfig: AppRouter.router(),
     );
   }
