@@ -1,31 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plan_go/src/data/default/plans_list.dart';
-import 'package:plan_go/src/domain/services/request_permision_service.dart';
 import 'package:plan_go/src/presentation/widgets/plans_tile.dart';
 import 'package:plan_go/src/presentation/widgets/theme_app_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    Future.microtask(
-      () async => await RequestPermissionsService.requestPhonePermission(),
-    );
-    super.initState();
-  }
+class PlanScreen extends StatelessWidget {
+  const PlanScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
-      appBar: ThemeAppBar(title: 'PlanGo'),
+      appBar: ThemeAppBar(title: 'Planes'),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -35,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: plansList.length,
         itemBuilder: (context, index) => PlansTile(
           plan: plansList[index],
-          onTap: () => Navigator.pushNamed(context, plansList[index].route),
+          onTap: () => context.pushNamed(plansList[index].route),
         ),
       ),
     );

@@ -3,12 +3,6 @@ import 'package:plan_go/src/data/models/plan.dart';
 
 final plansList = <Plan>[
   Plan(
-    'Consultas',
-    'Consultar mi saldo y planes',
-    'assets/images/consult_plan.png',
-    AppRouter.consultation,
-  ),
-  Plan(
     'Datos',
     'Comprar plan de datos',
     'assets/images/data_plan.png',
