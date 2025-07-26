@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../config/router/router.dart';
+
 class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ThemeAppBar({super.key, required this.title});
+  const ThemeAppBar({super.key, required this.title, this.showSetting = true});
   final String title;
+  final bool showSetting;
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +14,14 @@ class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
       ),
-      // actions: [
-      //   IconButton(
-      //     onPressed: () => Navigator.pushNamed(context, AppRouter.settings),
-      //     icon: Icon(Icons.settings_rounded),
-      //   ),
-      // ],
-      // actionsPadding: EdgeInsets.only(right: 8),
+      actions: [
+        if (showSetting)
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, AppRouter.settings),
+            icon: Icon(Icons.settings_rounded),
+          ),
+      ],
+      actionsPadding: EdgeInsets.only(right: 8),
     );
   }
 
