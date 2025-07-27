@@ -67,11 +67,6 @@ class ConsultationScreen extends StatelessWidget {
                         children: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(false),
-                            style: ButtonStyle(
-                              foregroundColor: WidgetStatePropertyAll(
-                                colorScheme.onSurface,
-                              ),
-                            ),
                             child: Text('Cancelar'),
                           ),
                           ElevatedButton(
